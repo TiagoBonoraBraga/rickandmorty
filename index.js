@@ -1,14 +1,14 @@
 const express = require("express");
 const cors = require("cors");
-const routes = require("./src/routes/rickandmorty.route");
-const connectToDatabase = require("./src/database/mongoConnection");
+const routes = require("./src/routes/personagem.route");
+// const connectToDatabase = require("./src/database/database");
 
 const port = 3000;
 const app = express();
 
 app.use(express.json()); 
 app.use(cors()); 
-connectToDatabase();
+// connectToDatabase();
 app.use("/personagens", routes);
 
 app.listen(port, () => {
