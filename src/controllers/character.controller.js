@@ -20,7 +20,14 @@ const findByIdCharactersController = async (req, res) => {
   res.send(oneCharacters);
 };
 
+const createCharactersController = async (req, res) => {
+  const character = req.body;
+  const newCharacter = await charactersService.createCharactersService(character);
+  res.send(newCharacter);
+};
+
 module.exports = {
   findAllCharactersController,
   findByIdCharactersController,
+  createCharactersController
 };
