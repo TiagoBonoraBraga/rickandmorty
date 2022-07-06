@@ -16,19 +16,21 @@ const createCharacterService = async (newCharacter) => {
 };
 
 const updateCharacterService = async (idParam, editCharacter) => {
-  const updateCharacter = await Characters.findByIdAndUpdate(idParam, editCharacter).setOptions({returnOriginal: false});
+  const updateCharacter = await Characters.findByIdAndUpdate(
+    idParam,
+    editCharacter,
+  ).setOptions({ returnOriginal: false });
   return updateCharacter;
 };
 
 const deleteCharacterService = async (idParam) => {
   return await Characters.findByIdAndDelete(idParam);
-}
-
+};
 
 module.exports = {
   findAllCharactersService,
   findByIdCharacterService,
   createCharacterService,
   updateCharacterService,
-  deleteCharacterService
+  deleteCharacterService,
 };

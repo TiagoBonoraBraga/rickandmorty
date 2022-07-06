@@ -18,35 +18,43 @@ const findByIdCharacterController = async (req, res) => {
     idParam,
   );
   if (!oneCharacter) {
-    res.status(404).send({ message: "Character não encontrada" }); 
+    res.status(404).send({ message: 'Character não encontrada' });
   }
   res.send(oneCharacter);
 };
 
 const createCharacterController = async (req, res) => {
   const character = req.body;
-  const newCharacter = await charactersService.createCharacterService(character);
-  res.status(201).send({ message: "Character criado com sucesso!", newCharacter });
+  const newCharacter = await charactersService.createCharacterService(
+    character,
+  );
+  res
+    .status(201)
+    .send({ message: 'Character criado com sucesso!', newCharacter });
 };
 
 const updateCharacterController = async (req, res) => {
   const idParam = req.params.id;
   const editCharacter = req.body;
-  const updatedCharacter = await charactersService.updateCharacterService(idParam, editCharacter);
-  res.status(201).send({ message: "Character atualizado com sucesso!", updatedCharacter });
-}
+  const updatedCharacter = await charactersService.updateCharacterService(
+    idParam,
+    editCharacter,
+  );
+  res
+    .status(201)
+    .send({ message: 'Character atualizado com sucesso!', updatedCharacter });
+};
 
 const deleteCharacterController = async (req, res) => {
   const idParam = req.params.id;
   await charactersService.deleteCharacterService(idParam);
-  res.status(201).send({ message: "Character deletado com sucesso!" });
+  res.status(201).send({ message: 'Character deletado com sucesso!' });
 };
-
 
 module.exports = {
   findAllCharactersController,
   findByIdCharacterController,
   createCharacterController,
   updateCharacterController,
-  deleteCharacterController
+  deleteCharacterController,
 };
