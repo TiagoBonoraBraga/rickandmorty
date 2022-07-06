@@ -26,8 +26,18 @@ const createCharactersController = async (req, res) => {
   res.send(newCharacter);
 };
 
+const updateCharactersController = async (req, res) => {
+  const idParam = req.params.id;
+  const editCharacter = req.body;
+  const updatedCharacter = await charactersService.updateCharactersService(idParam, editCharacter);
+  res.send(updatedCharacter);
+}
+
+
+
 module.exports = {
   findAllCharactersController,
   findByIdCharactersController,
-  createCharactersController
+  createCharactersController,
+  updateCharactersController,
 };

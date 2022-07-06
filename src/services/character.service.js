@@ -13,6 +13,11 @@ const findByIdCharactersService = async (idParam) => {
 const createCharactersService = async (newCharacter) => {
   const createdCharacter = await Characters.create(newCharacter);
   return createdCharacter;
+};
+
+const updateCharactersService = async (idParam, editCharacter) => {
+  const updateCharacter = await Characters.findByIdAndUpdate(idParam, editCharacter).setOptions({returnOriginal: false});
+  return updateCharacter;
 }
 
 
@@ -20,4 +25,5 @@ module.exports = {
   findAllCharactersService,
   findByIdCharactersService,
   createCharactersService,
+  updateCharactersService,
 };
