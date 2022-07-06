@@ -5,25 +5,30 @@ const findAllCharactersService = async () => {
   return allCharacters;
 };
 
-const findByIdCharactersService = async (idParam) => {
+const findByIdCharacterService = async (idParam) => {
   const oneCharacters = await Characters.findById(idParam);
   return oneCharacters;
 };
 
-const createCharactersService = async (newCharacter) => {
+const createCharacterService = async (newCharacter) => {
   const createdCharacter = await Characters.create(newCharacter);
   return createdCharacter;
 };
 
-const updateCharactersService = async (idParam, editCharacter) => {
+const updateCharacterService = async (idParam, editCharacter) => {
   const updateCharacter = await Characters.findByIdAndUpdate(idParam, editCharacter).setOptions({returnOriginal: false});
   return updateCharacter;
+};
+
+const deleteCharacterService = async (idParam) => {
+  return await Characters.findByIdAndDelete(idParam);
 }
 
 
 module.exports = {
   findAllCharactersService,
-  findByIdCharactersService,
-  createCharactersService,
-  updateCharactersService,
+  findByIdCharacterService,
+  createCharacterService,
+  updateCharacterService,
+  deleteCharacterService
 };
