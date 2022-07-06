@@ -12,6 +12,15 @@ const findAllCharactersController = async (req, res) => {
   res.send(allCharacters);
 };
 
+const findByIdCharactersController = async (req, res) => {
+  const idParam = req.params.id;
+  const oneCharacters = await charactersService.findByIdCharactersService(
+    idParam,
+  );
+  res.send(oneCharacters);
+};
+
 module.exports = {
   findAllCharactersController,
+  findByIdCharactersController,
 };

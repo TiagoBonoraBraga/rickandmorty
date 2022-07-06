@@ -5,6 +5,11 @@ const findAllCharactersService = async () => {
   return allCharacters;
 };
 
+const findByIdCharactersService = async (idParam) => {
+  const oneCharacters = await Characters.findById(idParam);
+  return oneCharacters;
+};
 module.exports = {
   findAllCharactersService,
+  findByIdCharactersService,
 };
