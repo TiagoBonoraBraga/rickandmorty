@@ -14,29 +14,32 @@ const findAllCharactersController = async (req, res) => {
 
 const findByIdCharacterController = async (req, res) => {
   const idParam = req.params.id;
-  const oneCharacters = await charactersService.findByIdCharacterService(
+  const oneCharacter = await charactersService.findByIdCharacterService(
     idParam,
   );
-  res.send(oneCharacters);
+  if (!oneCharacter) {
+    res.status(404).send({ message: "Character não encontrada" }); 
+  }
+  res.send(oneCharacter);
 };
 
 const createCharacterController = async (req, res) => {
   const character = req.body;
   const newCharacter = await charactersService.createCharacterService(character);
-  res.send(newCharacter);
+  res.status(201).send({ message: "Character criado com sucesso!", newCharacter });
 };
 
 const updateCharacterController = async (req, res) => {
   const idParam = req.params.id;
   const editCharacter = req.body;
   const updatedCharacter = await charactersService.updateCharacterService(idParam, editCharacter);
-  res.send(updatedCharacter);
+  res.status(201).send({ message: "Character atualizado com sucesso!", updatedCharacter });
 }
 
 const deleteCharacterController = async (req, res) => {
   const idParam = req.params.id;
   await charactersService.deleteCharacterService(idParam);
-  res.send({ message: "Character deletado com sucesso!" });
+  res.status(201).send({ message: "Character deletado com sucesso!" });
 };
 
 

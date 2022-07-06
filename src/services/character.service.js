@@ -6,8 +6,8 @@ const findAllCharactersService = async () => {
 };
 
 const findByIdCharacterService = async (idParam) => {
-  const oneCharacters = await Characters.findById(idParam);
-  return oneCharacters;
+  const oneCharacter = await Characters.findById(idParam);
+  return oneCharacter;
 };
 
 const createCharacterService = async (newCharacter) => {
