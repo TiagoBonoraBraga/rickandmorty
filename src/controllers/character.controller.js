@@ -13,5 +13,5 @@ const findAllCharactersController = async (req, res) => {
 };
 
 module.exports = {
-    findAllCharactersController,
-}
+  findAllCharactersController,
+};
