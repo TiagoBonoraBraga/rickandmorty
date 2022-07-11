@@ -1,10 +1,16 @@
 const route = require('express').Router();
 const controllerCharacters = require('../controllers/character.controller');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../../swagger.json');
 
 const {
   validId,
   validObjectBody,
 } = require('../middlewares/character.middleware');
+
+route.use('/api-docs', swaggerUi.serve);
+route.use('/api-docs', swaggerUi.setup(swaggerDocument));
+
 
 route.get('/', controllerCharacters.findAllCharactersController);
 route.get(
